@@ -51,7 +51,15 @@ async function run() {
         // particular option er jonno kon kon slot book hoa gase seita bar kortesi
         const bookedSlots = optionBooked.map((book) => book.slot);
         console.log(date, option.name, bookedSlots);
+
+        //book slot gula bade baki gula filter kortesi
+        const remainingSlots = option.slots.filter(
+          (slot) => !bookedSlots.includes(slot)
+        );
+
+        option.slots = remainingSlots;
       });
+
       res.send(options);
     });
 
